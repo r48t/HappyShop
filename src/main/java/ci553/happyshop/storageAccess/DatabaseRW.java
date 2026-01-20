@@ -28,6 +28,9 @@ import java.util.ArrayList;
 
 public interface DatabaseRW {
 
+    ArrayList<Product> searchProduct(String keyword) throws SQLException;
+
+
     /**
      * Searches for products by a keyword, which may match the product ID or appear in the description.
      *
@@ -35,7 +38,7 @@ public interface DatabaseRW {
      * @return a list of products matching the keyword
      * @throws SQLException if a database access error occurs
      */
-    ArrayList<Product> searchProduct(String keyword) throws SQLException;
+
 
     /**
      * Searches for a product by its unique product ID.
