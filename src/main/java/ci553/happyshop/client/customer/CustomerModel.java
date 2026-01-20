@@ -25,7 +25,7 @@ public class CustomerModel {
     public DatabaseRW databaseRW; //Interface type, not specific implementation
                                   //Benefits: Flexibility: Easily change the database implementation.
 
-    private Product theProduct =null; // product found from search
+    private Product theProduct = null; // product found from search
     private ArrayList<Product> trolley =  new ArrayList<>(); // a list of products in trolley
 
     // Four UI elements to be passed to CustomerView for display updates.
