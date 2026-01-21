@@ -22,7 +22,8 @@ import java.util.Map;
  */
 public class CustomerModel {
     public CustomerView cusView;
-    public DatabaseRW databaseRW; //Interface type, not specific implementation
+    public DatabaseRW databaseRW;
+    public RemoveProductNotifier removeProductNotifier;//Interface type, not specific implementation
                                   //Benefits: Flexibility: Easily change the database implementation.
 
     private Product theProduct = null; // product found from search
@@ -150,28 +151,44 @@ public class CustomerModel {
             }
             else{ // Some products have insufficient stock — build an error message to inform the customer
                 StringBuilder errorMsg = new StringBuilder();
+                java.util.HashSet<String> idsToRemove = new java.util.HashSet<>();
+
                 for(Product p : insufficientProducts){
+                    idsToRemove.add(p.getProductId());
                     errorMsg.append("\u2022 "+ p.getProductId()).append(", ")
                             .append(p.getProductDescription()).append(" (Only ")
                             .append(p.getStockQuantity()).append(" available, ")
                             .append(p.getOrderedQuantity()).append(" requested)\n");
                 }
-                theProduct=null;
 
                 //TODO
                 // Add the following logic here:
                 // 1. Remove products with insufficient stock from the trolley.
+                trolley.removeIf(p -> idsToRemove.contains(p.getProductId()));
+
                 // 2. Trigger a message window to notify the customer about the insufficient stock, rather than directly changing displayLaSearchResult.
-                //You can use the provided RemoveProductNotifier class and its showRemovalMsg method for this purpose.
-                //remember close the message window where appropriate (using method closeNotifierWindow() of RemoveProductNotifier class)
-                displayLaSearchResult = "Checkout failed due to insufficient stock for the following products:\n" + errorMsg.toString();
-                System.out.println("stock is not enough");
+                displayTaTrolley = trolley.isEmpty() ? "Your trolley is empty" : ProductListFormatter.buildString(trolley);
+
+                // 3. notify with pop up
+                theProduct = null;
+                String popupMsg = "Checkout failed due to insufficient stock for:\n\n" + errorMsg;
+
+                if (removeProductNotifier != null) {
+                    try { removeProductNotifier.closeNotifierWindow(); } catch (Exception ignored) {}
+                    removeProductNotifier.showRemovalMsg(popupMsg);
+                }else{
+                    displayLaSearchResult = popupMsg;
+                }
+
+                System.out.println("Checkout blocked: insufficient stock");
+
             }
         }
         else{
             displayTaTrolley = "Your trolley is empty";
             System.out.println("Your trolley is empty");
         }
+
         updateView();
     }
 

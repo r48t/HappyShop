@@ -180,7 +180,7 @@ This log documents the changes and implementation of features made to the HappyS
 **Status**
 - Feature complete and stable
 
-## Final Status
+## Final Status - Audio
 
 - Continuous background audio implemented 
 - Audio initialised once at application startup 
@@ -190,8 +190,39 @@ This log documents the changes and implementation of features made to the HappyS
 
 --- 
 
+## Stock Shortage Handling
 
+**Goal** 
+- Prevent customers from placing orders that exceed available stock 
+- Ensure stock validation occurs at checkout using up-to-date database values. 
 
+**Implementation Details**
+- Updated `CustomerModel.checkOut()` to validate stock before order creation.
+- Grouped trolley items by Product ID to optimise stock checking.
+- Used `databaseRW.purchaseStocks(...)` to atomically verify and update stock levels.
+- If insufficient stock is detected:
+  - Checkout process is blocked.
+  - A detailed message is generated listing affected products, requested quantity, and available stock.
+  - Products with insufficient stock are removed from the trolley.
+  - Customer is notified using `RemoveProductNotifier` popup.
+- If stock is sufficient:
+  - Order is created via `OrderHub`.
+  - Trolley is cleared.
+  - Receipt is generated and displayed.
+
+**Problems Encountered**
+- Ensuring popup notifications were not immediately closed after display.
+- Preventing stale receipt data from remaining visible after failed checkout attempts.
+
+**Resolution**
+- Adjusted popup lifecycle so it remains visible until user action.
+- Cleared receipt output when checkout fails.
+- Updated trolley display dynamically after product removals.
+
+**Outcome**
+- Checkout now reliably prevents invalid orders due to stock shortages.
+- Customer receives clear feedback and can retry checkout with updated trolley contents.
+- Feature tested successfully with both sufficient and insufficient stock scenarios.
 
 ---
 
@@ -199,5 +230,5 @@ This log documents the changes and implementation of features made to the HappyS
 
 - Organized Trolley: Complete 
 - Flexible Search: Complete 
-- Stock Shortage Handling: Planned
+- Stock Shortage Handling: Complete
 - Background Sound: Complete 
