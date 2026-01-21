@@ -37,6 +37,7 @@ public class CustomerModel {
     //SELECT productID, description, image, unitPrice,inStock quantity
     void search() throws SQLException {
         String productId = cusView.tfId.getText().trim();
+        String productName = cusView.tfName.getText().trim();
         if(!productId.isEmpty()){
             theProduct = databaseRW.searchByProductId(productId); //search database
             if(theProduct != null && theProduct.getStockQuantity()>0){
@@ -54,13 +55,55 @@ public class CustomerModel {
                 displayLaSearchResult = "No Product was found with ID " + productId;
                 System.out.println("No Product was found with ID " + productId);
             }
-        }else{
+
+
+        }
+        else if(!productName.isEmpty()){
+            ArrayList<Product> results = databaseRW.searchProduct(productName);
+            if (results.isEmpty()){
+                theProduct = null;
+                displayLaSearchResult = "No products found matching \"" + productName + "\"";
+            }
+            else if(results.size() == 1){
+                theProduct = results.get(0);
+
+                if (theProduct.getStockQuantity() > 0){
+                    double unitPrice = theProduct.getUnitPrice();
+                    String description = theProduct.getProductDescription();
+                    int stock = theProduct.getStockQuantity();
+
+                    String baseInfo = String.format("Product_Id: %s\n%s,\nPrice: £%.2f", theProduct.getProductId(), description, unitPrice);
+                    String quantityInfo = stock < 100 ? String.format("\n%d units left.", stock) : "";
+                    displayLaSearchResult = baseInfo + quantityInfo;
+                }
+                else {
+                    theProduct = null;
+                    displayLaSearchResult = "Product \"" + productName + "\" is out of stock.";
+            }
+        }
+        else{
             theProduct=null;
-            displayLaSearchResult = "Please type ProductID";
-            System.out.println("Please type ProductID.");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("Multiple products found for \"").append(productName)
+                    .append("\".\n");
+            sb.append("Please refine your search or enter a Product ID.\n\n");
+
+            int maxToShow = Math.min(5, results.size());
+            for (int i = 0; i < maxToShow; i++){
+                Product p = results.get(i);
+                sb.append(String.format("%s  %-18.18s  £%.2f  (Stock: %d)\n", p.getProductId(), p.getProductDescription(), p.getUnitPrice(), p.getStockQuantity()));
+            }
+            displayLaSearchResult = sb.toString();
+        }
+
+    }
+        else{
+            theProduct = null;
+            displayLaSearchResult = "Please enter a Product ID or Name to search.";
         }
         updateView();
-    }
+}
 
     void addToTrolley(){
         if(theProduct!= null){

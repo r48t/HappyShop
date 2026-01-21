@@ -182,6 +182,8 @@ public class CustomerView  {
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
             cusController.doAction(action);
+         //   System.out.println("Button clicked: [" + action + "]");
+
         }
         catch(SQLException e){
             e.printStackTrace();
