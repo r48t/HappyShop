@@ -1,13 +1,255 @@
 ----------------------------------------------------------------
-Wed Jan 21 12:57:04 GMT 2026:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019b-e0a1-4888-000019a01590 
-on database directory /home/robertm/IdeaProjects/HappyShop/happyShopDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 
-Loaded from file:/home/robertm/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+Wed Jan 21 17:36:35 GMT 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019b-e1a1-2e08-00001df77ff8 
+on database directory C:\Users\Robert\IdeaProjects\HappyShop\happyShopDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@17a7cec2 
+Loaded from file:/C:/Users/Robert/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Microsoft
 java.runtime.version=21.0.9+10-LTS
-user.dir=/home/robertm/IdeaProjects/HappyShop
-os.name=Linux
+user.dir=C:\Users\Robert\IdeaProjects\HappyShop
+os.name=Windows 11
 os.arch=amd64
-os.version=6.17.0-8-generic
+os.version=10.0
 derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+
+------------  Begin Shutdown Error Stack -------------
+
+ERROR XSLA7: Cannot redo operation null in the log.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1525)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.LogToFile.recover(LogToFile.java:913)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.RawStore.boot(RawStore.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.bootServiceModule(RAMAccessManager.java:1332)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.boot(RAMAccessManager.java:1035)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootServiceModule(BasicDatabase.java:945)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootStore(BasicDatabase.java:773)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.boot(BasicDatabase.java:182)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.bootService(BaseMonitor.java:1817)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(BaseMonitor.java:1683)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(BaseMonitor.java:1567)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(BaseMonitor.java:988)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Monitor.java:598)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.startPersistentService(EmbedConnection.java:3994)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2809)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:406)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.AutoloadedDriver.connect(AutoloadedDriver.java:132)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.clearTables(SetDatabase.java:57)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.main(SetDatabase.java:46)
+Caused by: ERROR 40XD2: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.findpage(PageBasicOperation.java:278)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.needsRedo(PageBasicOperation.java:153)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1395)
+	... 35 more
+============= begin nested exception, level (1) ===========
+ERROR 40XD2: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.findpage(PageBasicOperation.java:278)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.needsRedo(PageBasicOperation.java:153)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1395)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.LogToFile.recover(LogToFile.java:913)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.RawStore.boot(RawStore.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.bootServiceModule(RAMAccessManager.java:1332)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.boot(RAMAccessManager.java:1035)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootServiceModule(BasicDatabase.java:945)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootStore(BasicDatabase.java:773)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.boot(BasicDatabase.java:182)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.bootService(BaseMonitor.java:1817)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(BaseMonitor.java:1683)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(BaseMonitor.java:1567)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(BaseMonitor.java:988)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Monitor.java:598)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.startPersistentService(EmbedConnection.java:3994)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2809)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:406)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.AutoloadedDriver.connect(AutoloadedDriver.java:132)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.clearTables(SetDatabase.java:57)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.main(SetDatabase.java:46)
+============= end nested exception, level (1) ===========
+
+
+------------  End Shutdown Error Stack -------------
+
+----------------------------------------------------------------
+Wed Jan 21 17:36:35 GMT 2026:
+Shutting down instance a816c00e-019b-e1a1-2e08-00001df77ff8 on database directory C:\Users\Robert\IdeaProjects\HappyShop\happyShopDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@17a7cec2 
+Wed Jan 21 17:36:35 GMT 2026 Thread[#1,main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'happyShopDB' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@17a7cec2, see the next exception for details.
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.Util.seeNextException(Util.java:252)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2848)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:406)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.AutoloadedDriver.connect(AutoloadedDriver.java:132)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.clearTables(SetDatabase.java:57)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.main(SetDatabase.java:46)
+Caused by: ERROR XJ040: Failed to start database 'happyShopDB' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@17a7cec2, see the next exception for details.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 12 more
+Caused by: ERROR 40XD2: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.findpage(PageBasicOperation.java:278)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.needsRedo(PageBasicOperation.java:153)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1395)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.LogToFile.recover(LogToFile.java:913)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.RawStore.boot(RawStore.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.bootServiceModule(RAMAccessManager.java:1332)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.boot(RAMAccessManager.java:1035)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootServiceModule(BasicDatabase.java:945)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootStore(BasicDatabase.java:773)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.boot(BasicDatabase.java:182)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.bootService(BaseMonitor.java:1817)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(BaseMonitor.java:1683)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(BaseMonitor.java:1567)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(BaseMonitor.java:988)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Monitor.java:598)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.startPersistentService(EmbedConnection.java:3994)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2809)
+	... 9 more
+============= begin nested exception, level (1) ===========
+java.sql.SQLTransactionRollbackException: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:100)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:230)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2842)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:406)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.AutoloadedDriver.connect(AutoloadedDriver.java:132)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.clearTables(SetDatabase.java:57)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.main(SetDatabase.java:46)
+Caused by: ERROR 40XD2: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.findpage(PageBasicOperation.java:278)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.needsRedo(PageBasicOperation.java:153)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1395)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.LogToFile.recover(LogToFile.java:913)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.RawStore.boot(RawStore.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.bootServiceModule(RAMAccessManager.java:1332)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.boot(RAMAccessManager.java:1035)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootServiceModule(BasicDatabase.java:945)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootStore(BasicDatabase.java:773)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.boot(BasicDatabase.java:182)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.bootService(BaseMonitor.java:1817)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(BaseMonitor.java:1683)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(BaseMonitor.java:1567)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(BaseMonitor.java:988)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Monitor.java:598)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.startPersistentService(EmbedConnection.java:3994)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2809)
+	... 9 more
+============= end nested exception, level (1) ===========
+============= begin nested exception, level (2) ===========
+ERROR 40XD2: Container Container(0, 2800) cannot be opened; it either has been dropped or does not exist.
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.commons/org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.findpage(PageBasicOperation.java:278)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.data.PageBasicOperation.needsRedo(PageBasicOperation.java:153)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.FileLogger.redo(FileLogger.java:1395)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.log.LogToFile.recover(LogToFile.java:913)
+	at org.apache.derby.engine/org.apache.derby.impl.store.raw.RawStore.boot(RawStore.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.bootServiceModule(RAMAccessManager.java:1332)
+	at org.apache.derby.engine/org.apache.derby.impl.store.access.RAMAccessManager.boot(RAMAccessManager.java:1035)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startModule(BaseMonitor.java:527)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.FileMonitor.startModule(FileMonitor.java:45)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Monitor.java:460)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootServiceModule(BasicDatabase.java:945)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.bootStore(BasicDatabase.java:773)
+	at org.apache.derby.engine/org.apache.derby.impl.db.BasicDatabase.boot(BasicDatabase.java:182)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.boot(BaseMonitor.java:1989)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.TopService.bootModule(TopService.java:334)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.bootService(BaseMonitor.java:1817)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(BaseMonitor.java:1683)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(BaseMonitor.java:1567)
+	at org.apache.derby.engine/org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(BaseMonitor.java:988)
+	at org.apache.derby.engine/org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Monitor.java:598)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.startPersistentService(EmbedConnection.java:3994)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(EmbedConnection.java:2809)
+	at org.apache.derby.engine/org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:406)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.engine/org.apache.derby.iapi.jdbc.AutoloadedDriver.connect(AutoloadedDriver.java:132)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:253)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.clearTables(SetDatabase.java:57)
+	at ci553.happyshop/ci553.happyshop.systemSetup.SetDatabase.main(SetDatabase.java:46)
+============= end nested exception, level (2) ===========
+Cleanup action completed

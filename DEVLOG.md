@@ -18,7 +18,7 @@ This log documents the changes and implementation of features made to the HappyS
 
 **Notes** 
 - Customer functionality is split into MVC structure, in customer folder. 
-- Database access is handled via 'DatabaseRW' and 'DerbyRW'
+- Database access is handled via `DatabaseRW` and `DerbyRW`
 
 **Outcome** 
 - Ready to begin implementing first feature 
@@ -33,7 +33,7 @@ This log documents the changes and implementation of features made to the HappyS
 - Sort trolley items by Product ID (ascending)
 
 **Implementation Details** 
-- Changes made in 'ProductListFormatter.buildString()'
+- Changes made in `ProductListFormatter.buildString()`
 - Used a 'TreeMap' to group products by Product ID
 - Quantities summed before formatting output 
 - Existing trolley data structure left unchanged 
@@ -63,9 +63,9 @@ This log documents the changes and implementation of features made to the HappyS
   3. Prompt user if both are empty 
 
 **Implementation Details** 
-- Updated 'CustomerModel.search()'
-- ID search uses 'searchByProductID'
-- Name search uses 'databaseRW.searchProduct()' (same method as Warehouse)
+- Updated `CustomerModel.search()`
+- ID search uses `searchByProductID`
+- Name search uses `databaseRW.searchProduct()` (same method as Warehouse)
 - Multiple name matches display a short list and prompt refinement 
 - Prevented adding products when results are ambiguous or out of stock 
 
@@ -83,15 +83,121 @@ This log documents the changes and implementation of features made to the HappyS
 
 ## Background Sound (Initial Implementation)
 
+**Goal**
+- Add continuous background sound that plays while the application is running. 
 
-**Tasks** 
+**Design Decision** 
+- Encapsulate audio functionality in a dedicated utility class (`SoundPlay`)
+- Initialise audio once during application startup to avoid repeated playback 
+- Stop audio when application exits 
 
+**Implementation** 
+- Created `SoundPlay` class using JavaFX `Media` and `MediaPlayer`
+- Audio file placed in `src/main/resources/audio/`
+- Audio initialised in `Main.start()`
+- Looping enabled using `MediaPlayer.INDEFINITE`
+
+**Status**
+- Code compiles successfully
+- Application crashes at runtime due to media initialisation failure
+
+## JavaFX Media Configuration
+
+**Issue** 
+- JavaFX media classes were not resolving correctly 
+
+**Investigation**
+- Identified that JavaFX Media is a module not included by default
+
+**Fix** 
+- Added `javafx-media` dependency to `pom.xml`
+- Ensured JavaFX version matched existing UI dependencies 
+- Reloaded Maven project
+- Added `requires javafx.media;` to `module-info.java`
+
+**Outcome**
+- Media classes resolved correctly
+- Application progressed to runtime media loading stage
+
+## Resource Loading Debugging
+
+**Issue** 
+- Application crashed with `NullPointerException` when loading audio resource.
+
+**Investigation**
+- Used debug output to confirm `getResource(...)` returned `null`
+- Identified mismatch between audio filename and resource path
+- Confirmed correct resource packaging under `target/classes`
+
+**Resolution**
+- Corrected resource path to match actual filename
+- Verified resource URL printed correctly at runtime
+
+**Outcome**
+- Audio file successfully located on classpath
+- Media initialisation proceeded to next stage
+
+## Media Compatibility Issues (Linux)
+
+**Issue**
+- JavaFX `MediaPlayer` failed at runtime with:
+  “Could not create player!”
+  and `ERROR_MEDIA_AUDIO_FORMAT_UNSUPPORTED`
+
+**Investigation**
+- Error occurred even with valid resource paths
+- Confirmed issue was not related to Maven or Java code
+- Identified Linux JavaFX media backend dependency on native codecs
+
+**Attempted Fix**
+- Converted MP3 audio file to WAV
+- Retested using both `MediaPlayer` and `AudioClip`
+
+**Outcome**
+- Error persisted, indicating missing native media backend rather than format issue
+
+
+## JavaFX Media Backend Resolution (Linux)
+
+**Root Cause**
+- JavaFX media on Linux depends on native GStreamer plugins
+- Required plugins were not installed on the system
+
+**Resolution**
+- Installed GStreamer and codec plugins:
+  - gstreamer1.0-plugins-base
+  - gstreamer1.0-plugins-good
+  - gstreamer1.0-plugins-bad
+  - gstreamer1.0-plugins-ugly
+  - gstreamer1.0-libav
+- Restarted IDE to reload native libraries
+
+**Outcome**
+- JavaFX successfully created media players
+- Background audio played continuously during application runtime
+- Audio stopped cleanly when application exited via JavaFX lifecycle `stop()`
+
+**Status**
+- Feature complete and stable
+
+## Final Status
+
+- Continuous background audio implemented 
+- Audio initialised once at application startup 
+- Audio loops throughout application runtime 
+- Audio stops cleanly on application exit 
+- Cross-platform media limitations investigated and resolved 
 
 --- 
+
+
+
+
+---
 
 ## Current Status 
 
 - Organized Trolley: Complete 
 - Flexible Search: Complete 
 - Stock Shortage Handling: Planned
-- Background Sound: Planned 
+- Background Sound: Complete 
