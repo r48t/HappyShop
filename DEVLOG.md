@@ -17,7 +17,7 @@ This log documents the changes and implementation of features made to the HappyS
 - Run application to confirm all systems work 
 
 **Notes** 
-- Customer functionality is split into MVC structure, in customer folder. 
+- Customer functionality is split into MVC structure, in customer folder
 - Database access is handled via `DatabaseRW` and `DerbyRW`
 
 **Outcome** 
