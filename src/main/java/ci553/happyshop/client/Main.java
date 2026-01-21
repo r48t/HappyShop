@@ -12,6 +12,7 @@ import ci553.happyshop.client.warehouse.*;
 import ci553.happyshop.orderManagement.OrderHub;
 import ci553.happyshop.storageAccess.DatabaseRW;
 import ci553.happyshop.storageAccess.DatabaseRWFactory;
+import ci553.happyshop.utility.SoundPlay;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -39,6 +40,8 @@ public class Main extends Application {
         launch(args); // Launches the JavaFX application and calls the @Override start()
     }
 
+    private SoundPlay soundPlay;
+
     //starts the system
     @Override
     public void start(Stage window) throws IOException {
@@ -58,7 +61,17 @@ public class Main extends Application {
         startWarehouseClient();
 
         startEmergencyExit();
+
+        soundPlay = new SoundPlay();
     }
+
+    @Override
+    public void stop() {
+        if (soundPlay != null) {
+            soundPlay.stop();
+        }
+    }
+
 
     /** The customer GUI -search prodduct, add to trolley, cancel/submit trolley, view receipt
      *
@@ -157,6 +170,8 @@ public class Main extends Application {
         EmergencyExit.getEmergencyExit();
     }
 }
+
+
 
 
 

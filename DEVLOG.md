@@ -81,6 +81,14 @@ This log documents the changes and implementation of features made to the HappyS
 
 --- 
 
+## Background Sound (Initial Implementation)
+
+
+**Tasks** 
+
+
+--- 
+
 ## Current Status 
 
 - Organized Trolley: Complete 
