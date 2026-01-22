@@ -132,7 +132,7 @@ public class Main extends Application {
         orderHub.initializeOrderMap();
     }
 
-    /** The Warehouse GUI- for warehouse staff to manage stock
+    /** The Warehouse GUI - for warehouse staff to manage stock
      * Initializes the Warehouse client's Model, View, and Controller,and links them together for communication.
      * It also creates the DatabaseRW instance via the DatabaseRWFactory and injects it into the Model.
      * Once the components are linked, the warehouse interface (view) is started.
